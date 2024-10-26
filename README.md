@@ -26,7 +26,7 @@ This project is a data processing application that reads JSON data and processes
 First, clone the repository containing the project files:
 
 ```bash
-git clone [<repository-url>](https://github.com/yogeshwaran52/Aklamio_Assignment.git)
+git clone [https://github.com/yogeshwaran52/Aklamio_Assignment.git](https://github.com/yogeshwaran52/Aklamio_Assignment.git)
 cd Aklamio_Assignment
 ```
 
