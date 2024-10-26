@@ -7,11 +7,10 @@ This project is a data processing application that reads JSON data and processes
 ## Features
 
 - **Batch Processing**: Processes the entire JSON file at once.
-- **Streaming Processing**: Processes one line of JSON data at a time, suitable for large files or real-time data.
-- **Data Cleaning**: Validates and cleans data based on specific criteria.
-- **Metrics Calculation**: Computes page loads, clicks, unique user clicks, and click-through rates.
-- **PostgreSQL Integration**: Stores cleaned data and metrics in a PostgreSQL database.
-- **Logging**: Logs application activities and errors for monitoring and debugging.
+- **Streaming Processing**: Processes one line of JSON data at a time, for large files.
+- **Data Cleaning**: Validates and cleans data based on specific criteria. Check if the field event_type is nul, empty or with Value "EMPTY_VALUE" and Invalid date format.
+- **Metrics Calculation**: Computes page loads, clicks, unique user clicks, and click-through-rate.
+- **PostgreSQL Integration**: Stores cleaned data and metrics in a PostgreSQL database. 
 
 ## Prerequisites
 
@@ -61,6 +60,10 @@ docker-compose exec postgres psql -U postgres -d aklamio
 
 ### Querying the Data
 Inside the PostgreSQL prompt, you can run the following SQL queries to inspect the processed data:
+TABLES:
+1) cleaned_data - Contains the data which is cleaned based on specific condition mentioned in Features.
+2) failed_data - Contains the data which failed the validation.
+3) hourly_aggregates - Contains the metrics calculation per customer. 
 
 ```bash
 -- View cleaned data
@@ -71,6 +74,8 @@ SELECT * FROM failed_data;
 
 -- View hourly aggregates
 SELECT * FROM hourly_aggregates;
+SELECT customer_id, hour, page_loads, clicks, unique_user_clicks, click_through_rate FROM hourly_aggregates;
+
 
 Once done you can exit with command "\q"
 ```
