@@ -60,7 +60,7 @@ def clean_data(df):
 
     cleaned_data = cleaned_data[~date_conversion_errors]
 
-    # logging.info(f"Cleaned data: {len(cleaned_data)} valid rows; {len(failed_data)} failed rows.")
+    logging.info(f"Cleaned data: {len(cleaned_data)} valid rows; {len(failed_data)} failed rows.")
     return cleaned_data, failed_data
 
 def calculated_fields(df):
@@ -101,6 +101,7 @@ def process_full_data(file_path):
     database = create_db_database()
     df = load_json_data(file_path)
     cleaned_data, failed_data = clean_data(df)
+    cleaned_data = cleaned_data.drop_duplicates()
     logging.info(f"Cleaned data: {len(cleaned_data)} valid rows; {len(failed_data)} failed rows.")
     insert_into_db(cleaned_data, 'cleaned_data', database)
     insert_into_db(failed_data, 'failed_data', database)
