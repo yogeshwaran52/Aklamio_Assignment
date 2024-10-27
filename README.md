@@ -19,7 +19,6 @@ In batch process, I assumed there will be some duplicates. In Streaming Process,
 ## Prerequisites
 
 - [Docker](https://www.docker.com/get-started)
-- [Docker Compose](https://docs.docker.com/compose/install/)
 - PostgreSQL running in Docker
 
 ## Getting Started
