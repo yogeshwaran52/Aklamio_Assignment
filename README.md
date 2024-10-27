@@ -4,13 +4,17 @@
 
 This project is a data processing application that reads JSON data and processes it either in batch mode or in streaming mode. The processed data is stored in a PostgreSQL database. The application performs data cleaning, metrics calculation, and logging of both successful and failed data entries.
 
-## Features
+## Features/Process
 
 - **Batch Processing**: Processes the entire JSON file at once.
 - **Streaming Processing**: Processes one line of JSON data at a time, for large files.
 - **Data Cleaning**: Validates and cleans data based on specific criteria. Check if the field event_type is nul, empty or with Value "EMPTY_VALUE" and Invalid date format.
 - **Metrics Calculation**: Computes page loads, clicks, unique user clicks, and click-through-rate.
 - **PostgreSQL Integration**: Stores cleaned data and metrics in a PostgreSQL database. 
+
+## Assumption
+
+In batch process, I assumed there will be some duplicates. In Streaming Process, I assumed there wont be any duplicates
 
 ## Prerequisites
 
